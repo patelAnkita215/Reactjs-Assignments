@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArrayObject</title>
+</head>
+<body>
+    <script>
+        let fruitArry = ["Mango","Apple","Orange","Banana"];
+
+        // Array push value = add new value at the end  of an array
+        fruitArry.push("Dragon");
+        console.log("Array Push",fruitArry);
+
+        // Array Pop add remove value at the end of an array
+        fruitArry.pop();
+        console.log("Array Pop",fruitArry);
+
+        // Array unshift add new value at the 1st of an array
+        fruitArry.unshift("Kiwi");
+        console.log("Array unshift",fruitArry);
+
+        // Array shift = remove 1st value
+        fruitArry.shift();
+        console.log("Array shift",fruitArry);
+
+        // Array Slice
+        let sliceArray = fruitArry.slice(1,3);
+        console.log("Array Slice",sliceArray);
+        
+        // Object
+        let detailObj = {Name: "Shivansh",DOB: "15 March",Age: 2.5}
+        console.log("Shivansh Details",detailObj);
+
+        
+    </script>
+</body>
+</html>
