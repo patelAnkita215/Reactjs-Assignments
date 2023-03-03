@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Inheritance means access Parent Data to the child</p>
+    <p>The JavaScript extends keyword is used to create a child class on the basis of a parent class. It facilitates child class to acquire all the properties and behavior of its parent class.</p>
+    <p>Inheritance is a useful feature that allows code reusability.</p>
+    <p>for accessing both parent and child data we can create an object of child</p>
+
+    <!-- Points to remember -->
+    <p>It maintains an IS-A relationship.</p>
+    <p>The extends keyword is used in class expressions or class declarations.</p>
+    <p>Using extends keyword, we can acquire all the properties and behavior of the inbuilt object as well as custom classes.</p>
+    <p>We can also use a prototype-based approach to achieve inheritance.</p>
+    
+    <script>  
+        class Moment extends Date {  
+          constructor() {  
+            super();  
+          }}  
+        var m=new Moment();  
+        document.writeln("Current date:")  
+        document.writeln(m.getDate()+"-"+(m.getMonth()+1)+"-"+m.getFullYear());  
+    </script>  
+    
+</body>
+</html>

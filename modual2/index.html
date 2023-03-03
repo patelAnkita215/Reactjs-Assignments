@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculate Price</title>
+    <link rel="stylesheet" href="assest/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assest/css/style.css" />
+  </head>
+  <body>
+    <div class="table-price">
+      <div class="table-responsive">
+        <table class="table table-striped table_cart">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Product Info</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Price(per unit)</th>
+              <th scope="col">Price(Subtotal)</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="item-row">
+              <th scope="row">1</th>
+              <td>
+                <div class="product-detail">
+                  <div class="product-logo">
+                    <img src="assest/images/product1.jpg" class="img-fluid" width="100px" />
+                  </div>
+                  <div class="product-name">Product Name</div>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <input class="input_qty" name="quantity" value="0" />
+                  <span class="add_qty"> + </span>
+                  <span class="remove_qty"> - </span>
+                </div>
+              </td>
+              <td>
+                <span class="item_price" data-price="500"> Rs. 500/-</span>
+            </td>
+              <td><span  class="item-cost-val">  </span>/-</td>
+              <td> <a href="javascript:" class="js_remove_item">Remove</a> </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="assest/js/jquery-3.6.0.min.js"></script>
+    <script  src="assest/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".add_qty").on("click", function (ev) {
+          $currObj = $(ev.currentTarget);
+          var currQCount = getCurrQCount($currObj);
+          currQCount++;
+          updateData($currObj, currQCount);
+        });
+
+        $(".remove_qty").on("click", function (ev) {
+          $currObj = $(ev.currentTarget);
+          var currQCount = getCurrQCount($currObj);
+
+          currQCount--;
+          updateData($currObj, currQCount);
+        });
+
+        function getCurrQCount($currObj) {
+          return $currObj.siblings(".input_qty").val();
+        }
+
+        function updateData($currObj, currQCount) {
+          $currObj.siblings(".input_qty").val(currQCount);
+
+          var $parentObj = $currObj.closest(".item-row");
+          var itemPrice = $parentObj.find(".item_price").attr("data-price");
+          var itemCost = Number(itemPrice) * currQCount;
+          $parentObj.find(".item-cost-val").text(itemCost);
+
+          var subTotal = getSubTotal();
+          var vatAmount = getVatAmount();
+          var totalCost = subTotal + vatAmount;
+          $("#subtotal").text(subTotal);
+          $("#total_vat").text(vatAmount);
+          $("#total_cost").text(totalCost);
+        }
+
+        function getSubTotal() {
+          var subTotal = 0;
+          $(".item-cost-val").each(function () {
+            subTotal += Number($(this).text());
+          });
+          return subTotal;
+        }
+
+        function getVatAmount() {
+          var vatPercentage = 0.2;
+          return vatPercentage * getSubTotal();
+        }
+      });
+    </script>
+  </body>
+</html>
